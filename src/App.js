@@ -1,12 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import Header from './components/Header';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card, Space } from 'antd';
-import { Select, Input } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons';
+import { Card, Space, Input } from 'antd';
 import { useCharacterContext } from "./store/filter-context";
 import { Link } from "react-router-dom"
-
 
 const { Search } = Input;
 const { Meta } = Card;
@@ -16,6 +13,7 @@ export default function App() {
   const [characters, setCharacters] = useState([]);
   const { name, status, gender, setName, setStatus, setGender } =
     useCharacterContext();
+
 
   // if (typeof name === 'string' && typeof status === 'string' && typeof gender === 'string') {
   const filteredCharacters = characters.filter(
@@ -38,19 +36,19 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header />
-      <h1>Rick and Morty Characters</h1>
-      <Space direction='vertical'>
+      <Space style={{ alignItems: 'center', justifyContent: 'center', margin: '20px' }} wrap>
         {filteredCharacters.length !== 0 ? (
           filteredCharacters.map((character) => (
             <Card
               key={character.id}
-              style={{ width: 300 }}
+              style={{ width: 300, borderColor: 'lightgrey' }}
               cover={
-                <img
-                  alt="example"
-                  src={character.image}
-                />
+                <Link to={`/${character.id}`}>
+                  <img
+                    alt="example"
+                    src={character.image}
+                  />
+                </Link>
               }
               actions={[
                 <Link to={`/${character.id}`}><EllipsisOutlined title='Go to detail page' style={{ fontSize: 30 }} key="ellipsis" /></Link>,
@@ -61,10 +59,8 @@ export default function App() {
               />
             </Card>
           ))
-        ) : (<div>Could not find anything</div>)}
-
+        ) : (<div style={{ height: '76vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '30px' }}>Could not find anything</div>)}
       </Space>
-
     </div >
   );
 }
