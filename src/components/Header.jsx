@@ -3,6 +3,7 @@ import { Select, Space, Input, Button } from 'antd';
 import { useCharacterContext } from "../store/filter-context";
 import { CaretLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 const { Search } = Input;
 
@@ -19,15 +20,17 @@ export default function Header(prop) {
         <header className='App-header' style={{}}
         >
 
-            <Button style={{ marginLeft: '0px', position: 'relative', visibility: prop.goback, left: '30px' }} type="primary" shape="circle" onClick={() => navigate(-1)} icon={<CaretLeftOutlined />} size={size} />
-
-            <h2 style={{ position: 'relative', right: '15vh' }}>Rick and Morty App</h2>
-
+            <Space>
+                <Button style={{ marginLeft: '0px', position: 'relative', visibility: prop.goback, right: '16vh' }} type="primary" shape="circle" onClick={() => navigate(-1)} icon={<CaretLeftOutlined />} size={size} />
+                <Link to={'/'} style={{ color:'black' }}>
+                    <h2 style={{ position: 'relative', right: '15vh'  }}>Rick and Morty App</h2>
+                </Link>
+            </Space>
             <Space style={{
                 visibility: prop.filter,
             }}>
                 <Search placeholder="Who is your favorite character?" style={{
-                    width: 250,
+                    width: 260,
                 }} onSearch={(value) => setName(value)} enterButton />
 
                 <Select

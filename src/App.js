@@ -21,6 +21,7 @@ export default function App() {
       character.name.toLowerCase().includes(name.toLowerCase()) &&
       character.status.toLowerCase().includes(status.toLowerCase()) &&
       character.gender.toLowerCase().includes(gender.toLowerCase())
+
   );
   // } else {
   //   // handle the undefined variables
@@ -29,9 +30,12 @@ export default function App() {
 
 
   useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json())
-      .then((data) => setCharacters(data.results));
+
+      fetch(`https://rickandmortyapi.com/api/character/?page=5`)
+        .then((response) => response.json())
+        .then((data) => setCharacters([...characters,...data.results]));
+
+
   }, []);
 
   return (

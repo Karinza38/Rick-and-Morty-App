@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { useEffect, useState } from "react";
-import { Image, Space, Descriptions, Col, Row, Card } from 'antd';
+import { Image, Space, Descriptions, Col, Row, Card, Spin } from 'antd';
 import { useParams } from "react-router-dom";
 
 
@@ -88,7 +88,7 @@ export default function CharacterDetail() {
 
                         </Space>
                     ) : (
-                        (<div style={{ height: '76vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '30px' }}>Loading...</div>)
+                        (<div style={{ height: '76vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '30px' }}><Spin size="large" /></div>)
                     )
                 }
             </div>
