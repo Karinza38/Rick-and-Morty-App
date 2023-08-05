@@ -14,26 +14,45 @@ export default function App() {
   const { name, status, gender, setName, setStatus, setGender } =
     useCharacterContext();
 
-
-  // if (typeof name === 'string' && typeof status === 'string' && typeof gender === 'string') {
   const filteredCharacters = characters.filter(
     (character) =>
       character.name.toLowerCase().includes(name.toLowerCase()) &&
       character.status.toLowerCase().includes(status.toLowerCase()) &&
       character.gender.toLowerCase().includes(gender.toLowerCase())
-
   );
-  // } else {
-  //   // handle the undefined variables
-  // }
+
+  const uniqueNames = new Set();
+  const uniqueFilteredCharacters = filteredCharacters.filter((character) => {
+    if (!uniqueNames.has(character.name.toLowerCase())) {
+      uniqueNames.add(character.name.toLowerCase());
+      return true;
+    }
+    return false;
+  });
+
 
 
 
   useEffect(() => {
 
-      fetch(`https://rickandmortyapi.com/api/character/?page=5`)
-        .then((response) => response.json())
-        .then((data) => setCharacters([...characters,...data.results]));
+    const fetchCharacters = async (pageNumber) => {
+      try {
+        for (let page = 1; page <= pageNumber; page++) {
+          const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`);
+          const data = await response.json();
+          setCharacters((prevCharacters) => [...prevCharacters, ...data.results]);
+        }
+        console.log(characters);
+      } catch (error) {
+        console.error('Error fetching characters:', error);
+      }
+    };
+
+
+
+    // Fetch characters for pages characters from page 1 till 6
+
+    fetchCharacters(10);
 
 
   }, []);
@@ -41,8 +60,8 @@ export default function App() {
   return (
     <div className="App">
       <Space style={{ alignItems: 'center', justifyContent: 'center', margin: '20px' }} wrap>
-        {filteredCharacters.length !== 0 ? (
-          filteredCharacters.map((character) => (
+        {uniqueFilteredCharacters.length !== 0 ? (
+          uniqueFilteredCharacters.map((character) => (
             <Card
               key={character.id}
               style={{ width: 300, borderColor: 'lightgrey' }}
