@@ -17,47 +17,50 @@ export default function Header(prop) {
     const [size, setSize] = useState('large');
 
     return (
-        <header className='App-header' style={{}}
+        <header className='App-header' style={{ paddingLeft: '10px', paddingRight: '10px' }}
         >
 
             <Space>
-                <Button style={{ marginLeft: '0px', position: 'relative', visibility: prop.goback, right: '16vh' }} type="primary" shape="circle" onClick={() => navigate(-1)} icon={<CaretLeftOutlined />} size={size} />
-                <Link to={'/'} style={{ color:'black' }}>
-                    <h2 style={{ position: 'relative', right: '15vh'  }}>Rick and Morty App</h2>
+                <Button className='go-back' style={{ visibility: prop.goback }} type="primary" shape="circle" onClick={() => navigate(-1)} icon={<CaretLeftOutlined />} size={size} />
+                <Link to={'/'} style={{ color: 'black' }}>
+                    <h2 className="App-logo">Rick N Morty</h2>
                 </Link>
             </Space>
-            <Space style={{
+            <Space className='search-filter' style={{
                 visibility: prop.filter,
             }}>
                 <Search placeholder="Who is your favorite character?" style={{
                     width: 260,
                 }} onSearch={(value) => setName(value)} enterButton />
 
-                <Select
-                    defaultValue="Status"
-                    style={{ width: 120 }}
-                    onChange={(value) => setStatus(value)}
-                    // allowClear
-                    options={[
-                        { value: 'alive', label: 'Alive' },
-                        { value: 'dead', label: 'Dead' },
-                        { value: 'unknown', label: 'Unknown' },
-                    ]}
-                />
-                <Select
-                    defaultValue="Gender"
-                    style={{ width: 120 }}
-                    onChange={(value) => setGender(value)}
-                    // allowClear
-                    options={[
-                        { value: 'female', label: 'Female' },
-                        { value: 'male', label: 'Male' },
-                        { value: 'unknown', label: 'Unknown' },
-                    ]}
-                />
+                <Space className="filter">
+                    <Select
+                        defaultValue="Status"
+                        style={{ width: 120 }}
+                        onChange={(value) => setStatus(value)}
+                        // allowClear
+                        options={[
+                            { value: 'alive', label: 'Alive' },
+                            { value: 'dead', label: 'Dead' },
+                            { value: 'unknown', label: 'Unknown' },
+                        ]}
+                    />
+                    <Select
+                        defaultValue="Gender"
+                        style={{ width: 120 }}
+                        onChange={(value) => setGender(value)}
+                        // allowClear
+                        options={[
+                            { value: 'female', label: 'Female' },
+                            { value: 'male', label: 'Male' },
+                            { value: 'unknown', label: 'Unknown' },
+                        ]}
+                    />
+                </Space>
+
             </Space>
 
-        </header>
+        </header >
     )
 }
 

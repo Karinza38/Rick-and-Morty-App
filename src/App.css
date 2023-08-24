@@ -8,13 +8,145 @@
   color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
   backdrop-filter: blur(7.3px);
   -webkit-backdrop-filter: blur(7.3px);
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .search-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+  }
+
+  .filter {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .App-logo {
+    margin-left: '2px';
+    margin-right: '3px';
+  }
+
+  .go-back {
+    display: none;
+  }
+
+  .character-detail {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .profile {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    padding: 10px;
+  }
+
+  .character-detail table {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .character-detail h1 {
+    margin: 20px;
+  }
+
+  .character-detail tr {
+    font-size: medium;
+    text-align: left;
+    font-size: 1.6rem;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .App-logo {
+    margin-left: '5px';
+    margin-right: '5px';
+  }
+
+
+  .character-detail {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .profile {
+    margin-top: 25px;
+    margin-bottom: 30px;
+    padding: 10px;
+  }
+
+  .character-detail table {
+    text-align: left;
+    margin: 40px;
+  }
+
+  .character-detail h1 {
+    margin: 20px;
+  }
+
+  .character-detail tr {
+    text-align: left;
+    font-size: 2rem;
+  }
+
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .App-logo {
+    margin-left: '10px';
+    margin-right: '10px';
+  }
+
+  .character-detail {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .profile {
+    margin-top: 25px;
+    margin-bottom: 30px;
+    padding: 10px;
+  }
+
+  .character-detail table {
+    text-align: left;
+    margin: 0px 40px 80px 40px;
+  }
+
+  .character-detail h1 {
+    margin: 20px;
+    font-size: 3rem;
+  }
+
+  .character-detail tr {
+    text-align: left;
+    font-size: 3rem;
+  }
+
+
+
 }
 
 .characters div {
