@@ -16,7 +16,7 @@ const ApplyLayout = (page, pagename) => <Layout>
 
   {page}
   <footer style={{ textAlign: 'center', position: 'sticky', top: '95vh', fontSize: '16px', marginTop: "30px", marginBottom: "20px" }}>
-
+    <hr/>
     <span>
       ©RickandMortyCharacters {year}{" "}. All Rights Reserved.
     </span>
