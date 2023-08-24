@@ -1,10 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { EllipsisOutlined } from '@ant-design/icons';
-import { Card, Space, Input } from 'antd';
+import { Card, Space, Input, Pagination, Spin } from 'antd';
 import { useCharacterContext } from "./store/filter-context";
 import { Link } from "react-router-dom";
-import { Pagination } from 'antd';
 
 const { Search } = Input;
 const { Meta } = Card;
@@ -21,9 +20,9 @@ export default function App() {
 
     const fetchCharacters = async (pageNumber) => {
       try {
-          const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${pageNumber}`);
-          const data = await response.json();
-          setCharacters(data.results);
+        const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${pageNumber}`);
+        const data = await response.json();
+        setCharacters(data.results);
         console.log(characters);
       } catch (error) {
         console.error('Error fetching characters:', error);
@@ -60,33 +59,35 @@ export default function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Space style={{ alignItems: 'center', justifyContent: 'center', margin: '20px' }} wrap>
-        {uniqueFilteredCharacters.length !== 0 ? (
-          uniqueFilteredCharacters.map((character) => (
-            <Card
-              key={character.id}
-              style={{ width: 300, borderColor: 'lightgrey' }}
-              cover={
-                <Link to={`/${character.id}`}>
-                  <img
-                    alt="example"
-                    src={character.image}
-                  />
-                </Link>
-              }
-            >
-              <Meta
-                title={character.name}
-              />
-            </Card>
-          ))
-        ) : (<div style={{ height: '76vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '30px' }}>Could not find anything</div>)}
-      </Space>
-      <Space style={{ alignItems: 'center', justifyContent: 'center', margin: '20px',marginTop: '40px' }} wrap>
-        <Pagination current={current} onChange={onChange} total={420} />
-      </Space>
-    </div >
+    uniqueFilteredCharacters.length !== 0 ? (
+      <div className="App">
+        <Space style={{ alignItems: 'center', justifyContent: 'center', margin: '20px' }} wrap>
+          {
+            uniqueFilteredCharacters.map((character) => (
+              <Card
+                key={character.id}
+                style={{ width: 300, borderColor: 'lightgrey' }}
+                cover={
+                  <Link to={`/${character.id}`}>
+                    <img
+                      alt="example"
+                      src={character.image}
+                    />
+                  </Link>
+                }
+              >
+                <Meta
+                  title={character.name}
+                />
+              </Card>
+            ))
+          }
+        </Space>
+        <Space style={{ alignItems: 'center', justifyContent: 'center', margin: '20px', marginTop: '40px' }} wrap>
+          <Pagination current={current} onChange={onChange} total={420} />
+        </Space>
+      </div >) : (<div style={{ height: '76vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '30px' }}><Spin size="large" /></div>)
+      // Could not find anything
   );
 }
 

@@ -8,13 +8,53 @@
   color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1;
   backdrop-filter: blur(7.3px);
   -webkit-backdrop-filter: blur(7.3px);
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .search-filter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+  }
+  .filter{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .App-logo{
+    margin-left: '2px';
+    margin-right: '3px'; 
+  }
+
+  .go-back {
+    display: none;
+  }
+
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .App-logo{
+    margin-left: '5px';
+    margin-right: '5px'; 
+  }
+
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .App-logo{
+    margin-left: '10px';
+    margin-right: '10px'; 
+  }
+
 }
 
 .characters div {
