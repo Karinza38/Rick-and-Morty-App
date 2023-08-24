@@ -40,6 +40,7 @@
   }
 
   .character-detail {
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,6 +80,7 @@
 
 
   .character-detail {
+    height: 90vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -115,6 +117,7 @@
   }
 
   .character-detail {
+    height: 90vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
