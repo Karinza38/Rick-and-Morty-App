@@ -1,4 +1,4 @@
-# Rick and Morty App 🛸👽
+ # Rick and Morty App 🛸👽
 
 A fun and interactive web application featuring the lovable characters from the popular series Rick and Morty, with an array of filter options for an exciting exploration. 🚀
 
